@@ -22,6 +22,10 @@ Rodar App no Android: **expo start**
 Configurando TS no Expo Bare
 >https://www.notion.so/Configurando-TS-no-Expo-Bare-72ab2a6c963947308f3d166547631b46
 >
+>FONTES: **expo install expo-font @expo-google-fonts/poppins**
+>
+>LOADED: **expo install expo-app-loading**
+>
 HOOKS - IMUTABILIDADE - FLATLIST 
 
 >
