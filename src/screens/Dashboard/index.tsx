@@ -1,4 +1,5 @@
 import React from 'react';
+import { HighligthCard } from '../../components/HighligthCard';
 
 import { 
   Container,
@@ -9,17 +10,18 @@ import {
   User,
   UserGreeting,
   UserName,
-  Icon
+  Icon,
+  HighligthCards
   
 } from './styles';
 
 export function Dashboard() {
   return (
     <Container>
-       <Header>
+        <Header>
           <UserWrapper>
             <UserInfo>
-              <Photo source={{ uri: 'https://img.freepik.com/fotos-gratis/contador-que-calcula-o-lucro-com-graficos-de-analise-financeira_74855-4937.jpg?w=1380&t=st=1660958744~exp=1660959344~hmac=7e0c290e03465023f103173f4dddbfc54686cc905206a96a1b89d9248a8ae022'}}/>
+              <Photo source={{ uri: 'https://raw.githubusercontent.com/abruno36/GoFinances/master/src/assets/financas1.png'}}/>
               <User>
                 <UserGreeting>Go Finances,</UserGreeting>
                 <UserName>Seja Bem Vindo(a)!</UserName>
@@ -28,6 +30,21 @@ export function Dashboard() {
             <Icon name="power"/>
           </UserWrapper>
         </Header>
+
+        <HighligthCards>
+          <HighligthCard 
+            title='Entradas' 
+            amount="R$ 17.400,00" 
+            lastTransaction='Última entrada 01 de Abril'/>
+          <HighligthCard   
+            title='Saídas' 
+            amount="R$ 1.259,00" 
+            lastTransaction='Última saída 08 de Abril'/>
+          <HighligthCard   
+            title='Total' 
+            amount="R$ 16.141,00" 
+            lastTransaction='01 a 16 de Abril'/>
+        </HighligthCards>
     </Container>
   )
 }
