@@ -1,4 +1,5 @@
 import React from 'react';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 import { HighligthCard } from '../../components/HighligthCard';
 import { TransactionCard } from '../../components/TransactionCard';
@@ -16,10 +17,63 @@ import {
   HighligthCards,
   Transactions,
   Title,
-  
+  TransactionList
 } from './styles';
 
 export function Dashboard() {
+  const data = [
+    {
+      type: 'positive',
+      title: "Desenvolvimento App",
+      amount: "R$ 18.000,00",
+      category: {
+          name: "Vendas",
+          icon: "dollar-sign"
+      },
+      date: "20/08/2022"
+    },
+    {
+      type: 'negative',
+      title: "Compra PS5",
+      amount: "R$ 5.000,00",
+      category: {
+        name: "Vendas",
+        icon: "dollar-sign"
+      },
+      date: "20/08/2022"
+    },
+    { 
+      type: 'negative',
+      title: "Aluguel do apartamento",
+      amount: "R$ 2.400,00",
+      category: {
+        name: "Vendas",
+        icon: "dollar-sign"
+      },
+      date: "20/08/2022"
+    },
+    { 
+      type: 'negative',
+      title: "Hamburgueria Pizzy",
+      amount: "R$ 59,00",
+      category: {
+        name: "Alimentação",
+        icon: "dollar-sign"
+      },
+      date: "20/08/2022"
+    },
+    { 
+      type: 'positive',
+      title: "Arezzo",
+      amount: "R$ 22.400,00",
+      category: {
+        name: "Vendas",
+        icon: "dollar-sign"
+      },
+      date: "20/08/2022"
+    }
+  ];
+
   return (
     <Container>
         <Header>
@@ -55,7 +109,17 @@ export function Dashboard() {
 
         <Transactions>
            <Title>Listagem</Title>
-           <TransactionCard></TransactionCard>
+
+           <TransactionList 
+              data={data}
+              renderItem={({ item }) => <TransactionCard data={item}/>}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{
+                paddingBottom: getBottomSpace()
+              }}
+           />
+           
+           
         </Transactions>
     </Container>
   )

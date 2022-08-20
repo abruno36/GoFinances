@@ -1,46 +1,58 @@
-import React from 'react';
+import React from "react";
 
-import { 
-    Container,
-    Title,
-    Amount,
-    Footer,
-    Category,
-    Icon,
-    CategoryName,
-    Date
- } from './styles';
+import {
+  Container,
+  Title,
+  Amount,
+  Footer,
+  Category,
+  Icon,
+  CategoryName,
+  Date,
+} from "./styles";
 
- interface Category {
-    key: string;
-    name: string;
-    icon: string;
- }
-
- interface Props {
-    title: string;
-    amount: string;
-    category: Category;
-    date: string;
+interface Category {
+  name: string;
+  icon: string;
 }
 
-export function TransactionCard({
-    title,
-    amount,
-    category,
-    date} : Props){
-    return (
-       <Container>
-            <Title>Desenvolvimento APP</Title>
-            <Amount>R$ 15.000,00</Amount>
+interface Data {
+  type: 'positive' | 'negative';
+  title: string;
+  amount: string;
+  category: Category;
+  date: string;
+}
 
-            <Footer>
-                <Category>
-                    <Icon name="dollar-sign"/>
-                    <CategoryName>Vendas</CategoryName>
-                </Category>
-                <Date>13/04/2022</Date>
-            </Footer>
-       </Container> 
-    )
+interface Props {
+  data: Data
+}
+
+export function TransactionCard({ data }: Props) {
+  return (
+    <Container>
+      <Title>
+        {data.title}
+      </Title>
+
+      <Amount type={data.type}>
+        {data.type === 'negative' && '-'} 
+        {data.amount}
+      </Amount>
+
+      <Footer>
+        <Category>
+          <Icon name={data.category.icon} />
+
+          <CategoryName>
+            {data.category.name}
+          </CategoryName>
+        </Category>
+
+        <Date>
+            {data.date}
+        </Date>
+      </Footer>
+    </Container>
+  );
 }

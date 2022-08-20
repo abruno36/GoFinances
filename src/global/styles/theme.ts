@@ -13,7 +13,7 @@ export default {
         text: '#969CB2',
         text_dark: '#000000',
         background: '#F0F2F5',
-        attention: 'red'
+        attention: '#E83F5B'
     },
 
     fonts: {
