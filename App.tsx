@@ -10,7 +10,7 @@ import {
 } from '@expo-google-fonts/poppins';
 
 import theme from './src/global/styles/theme';
-import { Dashboard } from './src/screens/Dashboard';
+import { Register } from './src/screens/Register';
 
 export default function App() {
   const [canShow, setCanShow] = useState(false);
@@ -36,7 +36,7 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" backgroundColor="#969CB2" />
       <ThemeProvider theme={theme}>
-          <Dashboard/>
+          <Register/>
       </ThemeProvider>
     </>
   );
