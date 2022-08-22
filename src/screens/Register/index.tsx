@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 import { Modal } from 'react-native';
-import { useForm } from "react-hook-form";
+import { useForm, FieldValues } from "react-hook-form";
 
 import { InputForm } from '../../components/Form/InputForm';
 import { Input } from '../../components/Form/Input';
@@ -19,9 +19,9 @@ import {
     TransactionsTypes
 } from './styles';
 
-export interface FormData {
-    name: string;
-    amount: number;
+interface FormData {
+    name: string,
+    amount: string
   }
  
 
@@ -38,7 +38,7 @@ export function Register(){
     const {
         control,
         handleSubmit
-    } = useForm();
+    } = useForm<FormData>();
 
     function handleTransactionsTypeSelect(type: 'up' | 'down'){
         setTransactionType(type);
@@ -52,12 +52,12 @@ export function Register(){
         setCategoryModalOpen(false);
     }
 
-    function handleRegister(form: FormData) {
+    function handleRegister(form: FieldValues) {
         const data = {
-        name: form.name,
-        amount: form.amount,
-        transactionType,
-        category: category.key,
+            name: form.name,
+            amount: form.amount,
+            transactionType,
+            category: category.key,
         };
         
         console.log(data);
