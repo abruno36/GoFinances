@@ -9,8 +9,12 @@ import {
   Poppins_700Bold
 } from '@expo-google-fonts/poppins';
 
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 import theme from './src/global/styles/theme';
-import { Register } from './src/screens/Register';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { AppRoutes } from './src/routes/app.routes';
 
 export default function App() {
   const [canShow, setCanShow] = useState(false);
@@ -33,11 +37,13 @@ export default function App() {
     return null;
   }
   return (
-    <>
+    <GestureHandlerRootView style={{ flex:1}}>
       <StatusBar barStyle="light-content" backgroundColor="#969CB2" />
       <ThemeProvider theme={theme}>
-          <Register/>
+        <NavigationContainer>
+            <AppRoutes/>
+        </NavigationContainer>
       </ThemeProvider>
-    </>
+    </GestureHandlerRootView>
   );
 }
