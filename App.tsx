@@ -10,6 +10,8 @@ import {
 } from '@expo-google-fonts/poppins';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 
 import theme from './src/global/styles/theme';
 

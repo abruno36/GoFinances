@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { HighligthCard } from '../../components/HighligthCard';
 import { TransactionCard, TransactionCardProps } from '../../components/TransactionCard';
@@ -25,63 +26,45 @@ export interface DataListProps extends TransactionCardProps {
 }
 
 export function Dashboard() {
-  const data: DataListProps[] = [
-    {
-      id: '1',
-      type: 'positive',
-      title: "Desenvolvimento App",
-      amount: "R$ 18.000,00",
-      category: {
-          name: "Vendas",
-          icon: "dollar-sign"
-      },
-      date: "20/08/2022"
-    },
-    {
-      id: '2',
-      type: 'negative',
-      title: "Compra PS5",
-      amount: "R$ 5.000,00",
-      category: {
-        name: "Vendas",
-        icon: "shopping-bag"
-      },
-      date: "20/08/2022"
-    },
-    { 
-      id: '3',
-      type: 'negative',
-      title: "Aluguel do apartamento",
-      amount: "R$ 2.400,00",
-      category: {
-        name: "Vendas",
-        icon: "shopping-bag"
-      },
-      date: "20/08/2022"
-    },
-    { 
-      id: '4',
-      type: 'negative',
-      title: "Hamburgueria Pizzy",
-      amount: "R$ 59,00",
-      category: {
-        name: "Alimentação",
-        icon: "coffee"
-      },
-      date: "20/08/2022"
-    },
-    { 
-      id: '5',
-      type: 'positive',
-      title: "Arezzo",
-      amount: "R$ 22.400,00",
-      category: {
-        name: "Vendas",
-        icon: "dollar-sign"
-      },
-      date: "20/08/2022"
-    }
-  ];
+  const [data, setData] = useState<DataListProps[]>([]);
+
+  async function loadTransactions() {
+    const dataKey = '@gofinances:transactions';
+    const response = await AsyncStorage.getItem(dataKey);
+
+    const transactions = response ? JSON.parse(response) : [];
+
+    const transactionsFormatted: DataListProps[] = transactions
+      .map((item: DataListProps) => {
+        const amount = Number(item.amount)
+        .toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        });
+
+        const date = Intl.DateTimeFormat('pt-BR', {
+          day: '2-digit',
+          month: '2-digit',
+          year: '2-digit'
+        }).format(new Date(item.date));
+
+        return {
+          id: item.id,
+          name: item.name,
+          amount,
+          type: item.type,
+          category: item.category,
+          date
+        }
+      });
+  
+    setData(transactionsFormatted);
+    console.log(JSON.parse(transactions!));
+  }
+
+  useEffect(() => {
+    loadTransactions(); 
+  },[]);
 
   return (
     <Container>
