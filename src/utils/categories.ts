@@ -4,7 +4,7 @@ export const categories = [
     { key: 'salary30', name: 'Salario Final Avanade', icon: 'dollar-sign', color: '#12A454' },
     { key: 'salary15', name: 'Salario Quinzenal Avanade', icon: 'dollar-sign', color: '#12A454' },
     { key: 'aposentadoria', name: 'INSS', icon: 'dollar-sign', color: '#12A454' },
-    { key: 'freelance', name: 'LA', icon: 'dollar-sign', color: '#12A454' },
+    { key: 'freelance', name: 'LM', icon: 'dollar-sign', color: '#12A454' },
     { key: 'hospedagem1', name: 'Fitwellness - manutenção', icon: 'dollar-sign', color: '#12A454' },
     { key: 'hospedagem2', name: 'Sinos - manutenção', icon: 'dollar-sign', color: '#12A454' },
     { key: 'decimoterceiro1', name: '13º Salario Avanade', icon: 'dollar-sign', color: '#12A454' },
