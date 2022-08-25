@@ -27,20 +27,20 @@ export interface DataListProps extends TransactionCardProps {
   id: string;
 }
 
-interface HighLigthProps {
+interface HighligthProps {
   total: string;
 }
 
-interface HighLigthData {
-  entries: HighLigthProps;
-  expensives: HighLigthProps;
-  total: HighLigthProps;
+interface HighligthData {
+  entries: HighligthProps;
+  expensives: HighligthProps;
+  total: HighligthProps;
 }
 
 export function Dashboard() {
   const [transactions, setTransactions] = useState<DataListProps[]>([]);
 
-  const [highligthData, setHighligthData] = useState<HighLigthData>({} as HighLigthData);
+  const [highligthData, setHighligthData] = useState<HighligthData>({} as HighligthData);
 
   async function loadTransactions() {
     const dataKey = '@gofinances:transactions';
