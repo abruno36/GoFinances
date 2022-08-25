@@ -167,7 +167,7 @@ export function Dashboard() {
             <Header>
               <UserWrapper>
                 <UserInfo>
-                  <Photo source={{ uri: 'https://avatars.githubusercontent.com/u/5222757?s=400&u=07fab8df4c2007ef52cf5559689b51a668aceec0&v=4'}}/>
+                  <Photo source={{ uri: 'https://raw.githubusercontent.com/abruno36/GoFinances/master/src/assets/financas.png'}}/>
                   <User>
                     <UserGreeting>Go Finances,</UserGreeting>
                     <UserName>Seja Bem Vindo(a)!</UserName>
