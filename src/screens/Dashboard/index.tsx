@@ -137,7 +137,7 @@ export function Dashboard() {
 
     })
       
-    //console.log(transactions);
+    console.log(transactions);
     setIsLoading(false);
   }
 

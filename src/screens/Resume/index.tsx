@@ -64,7 +64,7 @@ export function Resume(){
         });
 
         setTotalByCategories(totalByCategory);
-        //console.log(totalByCategory);
+        console.log(totalByCategory);
     }
 
     useEffect(() => {
