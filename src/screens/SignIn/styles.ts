@@ -31,7 +31,7 @@ export const SignInTitle = styled.Text`
     font-size: ${RFValue(16)}px;
     font-family: ${({theme}) => theme.fonts.regular};
     text-align: center;
-    margin-top: 80px; 
+    margin-top: 60px; 
     margin-bottom: 67px;
 `;
 
