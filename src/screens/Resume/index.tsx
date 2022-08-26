@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { VictoryPie } from 'victory-native';
 import { HistoryCard } from '../../components/HistoryCard';
+import { RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 
 import {
     Container,
@@ -11,6 +12,7 @@ import {
     ChartContainer
 } from './styles';
 import { categories } from '../../utils/categories';
+import theme from '../../global/styles/theme';
 
 interface TransactionData {
     type: 'positive' | 'negative';
@@ -26,6 +28,7 @@ interface CategoryData {
     total: number;
     totalFormatted: string;
     color: string;
+    percent: string;
 }
 
 export function Resume(){
@@ -61,12 +64,17 @@ export function Resume(){
                     style: 'currency',
                     currency: 'BRL'
                 })
+
+                const percent = `${(categorySum / expensiveTotal * 100).toFixed(2)}%`;
+
+                console.log(percent);
                 totalByCategory.push({
                     key: category.key,
                     name: category.name,
                     color: category.color,
                     total: categorySum,
-                    totalFormatted
+                    totalFormatted,
+                    percent
                 })
             }
 
@@ -87,11 +95,20 @@ export function Resume(){
             </Header>
             <Content>
                 <ChartContainer>
-                    {/* <VictoryPie 
+                    <VictoryPie
                         data={totalByCategories}
-                        x="name"
+                        x="percent"
                         y="total"
-                    /> */}
+                        colorScale={totalByCategories.map(category => category.color)}
+                        style={{
+                            labels: {
+                            fontSize: RFValue(15),
+                            fontWeight: 'bold',
+                            fill: theme.colors.shape,
+                        },
+                        }}
+                        labelRadius={120}
+                    />
                 </ChartContainer>
                 {
                     totalByCategories.map(item => (
