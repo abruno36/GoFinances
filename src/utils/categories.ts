@@ -1,5 +1,5 @@
 export const categories = [
-    { key: 'purchases', name: 'Compras', icon: 'shopping-bag', color: '#5636D3' },
+    { key: 'purchases', name: 'Compras', icon: 'shopping-bag', color: '#00BFFF' },
     { key: 'food', name: 'Alimentação', icon: 'coffee', color: '#FF872C' },
     { key: 'salaryF', name: 'Salario Final', icon: 'dollar-sign', color: '#12A454' },
     { key: 'salaryQ', name: 'Salario Quinzenal', icon: 'dollar-sign', color: '#12A454' },
