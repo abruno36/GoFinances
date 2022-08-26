@@ -14,7 +14,7 @@ export const categories = [
     { key: 'villalobos', name: 'Villa Lobos', icon: 'book', color: '#8B008B' },
     { key: 'kvt', name: 'Pagamentos KVT', icon: 'book', color: '#DB7093' },
     { key: 'cartaocreditoP', name: 'Cartão Porto', icon: 'book', color: '#8A2BE2' },
-    { key: 'cartaocreditoB', name: 'Cartão Bradesco', icon: 'book', color: '#8A2BE2' },
+    { key: 'cartaocreditoB', name: 'Cartão Bradesco', icon: 'book', color: '#0000FF' },
     { key: 'cesta', name: 'Cesta Basica', icon: 'book', color: '#3CB371' },
     { key: 'empregadaQ', name: 'Empregada Quinzena', icon: 'book', color: '#3CB371' },
     { key: 'empregadaM', name: 'Empregada Mensal', icon: 'book', color: '#3CB371' },

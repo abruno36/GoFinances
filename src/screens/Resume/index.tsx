@@ -13,6 +13,7 @@ import {
 } from './styles';
 import { categories } from '../../utils/categories';
 import theme from '../../global/styles/theme';
+import { ScrollView } from 'react-native';
 
 interface TransactionData {
     type: 'positive' | 'negative';
@@ -93,34 +94,36 @@ export function Resume(){
             <Header>
                 <Title>Resumo por categoria</Title>
             </Header>
-            <Content>
-                <ChartContainer>
-                    <VictoryPie
-                        data={totalByCategories}
-                        x="percent"
-                        y="total"
-                        colorScale={totalByCategories.map(category => category.color)}
-                        style={{
-                            labels: {
-                            fontSize: RFValue(15),
-                            fontWeight: 'bold',
-                            fill: theme.colors.shape,
-                        },
-                        }}
-                        labelRadius={120}
-                    />
-                </ChartContainer>
-                {
-                    totalByCategories.map(item => (
-                        <HistoryCard 
-                            key={item.key}
-                            title={item.name}
-                            amount={item.totalFormatted}
-                            color={item.color}
+            <ScrollView>
+                <Content>
+                    <ChartContainer>
+                        <VictoryPie
+                            data={totalByCategories}
+                            x="percent"
+                            y="total"
+                            colorScale={totalByCategories.map(category => category.color)}
+                            style={{
+                                labels: {
+                                fontSize: RFValue(15),
+                                fontWeight: 'bold',
+                                fill: theme.colors.shape,
+                            },
+                            }}
+                            labelRadius={100}
                         />
-                    ))
-                }
-            </Content>
+                    </ChartContainer>
+                    {
+                        totalByCategories.map(item => (
+                            <HistoryCard 
+                                key={item.key}
+                                title={item.name}
+                                amount={item.totalFormatted}
+                                color={item.color}
+                            />
+                        ))
+                    }
+                </Content>
+            </ScrollView>
         </Container>
     )
 }
