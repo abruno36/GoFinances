@@ -7,7 +7,8 @@ import {
     Container,
     Header,
     Title,
-    Content
+    Content,
+    ChartContainer
 } from './styles';
 import { categories } from '../../utils/categories';
 
@@ -39,6 +40,11 @@ export function Resume(){
         const expensives = responseFormatted
         .filter((expensive: TransactionData) => expensive.type === 'negative');
 
+        const expensiveTotal = expensives
+        .reduce((acumulator: number, expensive: TransactionData ) => {
+            return acumulator + Number(expensive.amount);
+        }, 0);
+
         const totalByCategory: CategoryData[] = [];
 
         categories.forEach(category => {
@@ -67,7 +73,7 @@ export function Resume(){
         });
 
         setTotalByCategories(totalByCategory);
-        console.log(totalByCategory);
+        //console.log(totalByCategory);
     }
 
     useEffect(() => {
@@ -80,11 +86,13 @@ export function Resume(){
                 <Title>Resumo por categoria</Title>
             </Header>
             <Content>
-                <VictoryPie 
-                    data={totalByCategories}
-                    x="name"
-                    y="total"
-                />
+                <ChartContainer>
+                    {/* <VictoryPie 
+                        data={totalByCategories}
+                        x="name"
+                        y="total"
+                    /> */}
+                </ChartContainer>
                 {
                     totalByCategories.map(item => (
                         <HistoryCard 
