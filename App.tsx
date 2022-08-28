@@ -20,6 +20,8 @@ import { AppRoutes } from './src/routes/app.routes';
 
 import { SignIn } from './src/screens/SignIn';
 
+import { AuthProvider } from './src/hooks/auth';
+
 export default function App() {
   const [canShow, setCanShow] = useState(false);
   
@@ -42,10 +44,13 @@ export default function App() {
   }
   return (
     <GestureHandlerRootView style={{ flex:1}}>
-      <StatusBar barStyle="light-content" backgroundColor="#969CB2" />
+     
       <ThemeProvider theme={theme}>
+      <StatusBar barStyle="light-content"/>
         <NavigationContainer>
-            <SignIn/>
+            <AuthProvider>
+                <SignIn/>
+            </AuthProvider>
         </NavigationContainer>
       </ThemeProvider>
     </GestureHandlerRootView>
