@@ -26,6 +26,8 @@ import {
   LoadContainer
 } from './styles';
 
+import { useAuth } from '../../hooks/auth';
+
 export interface DataListProps extends TransactionCardProps {
   id: string;
 }
@@ -48,6 +50,7 @@ export function Dashboard() {
   const [highligthData, setHighligthData] = useState<HighligthData>({} as HighligthData);
 
   const theme = useTheme();
+  const { user, signOut } = useAuth();
 
   function getLastTransactionDate(collection: DataListProps[], 
     type: 'positive' | 'negative'
@@ -167,15 +170,15 @@ export function Dashboard() {
             <Header>
               <UserWrapper>
                 <UserInfo>
-                  <Photo source={{ uri: 'https://raw.githubusercontent.com/abruno36/GoFinances/master/src/assets/financas.png'}}/>
+                <Photo source={{uri: user.photo }}/>
                   <User>
                     <UserGreeting>Go Finances,</UserGreeting>
-                    <UserName>Seja Bem Vindo(a)!</UserName>
+                    <UserName>{user.name}</UserName>
                   </User>
                 </UserInfo>
 
                 <LogoutButton onPress={() => {}}>
-                    <Icon name="power"/>
+                    <Icon name="power" onPress={signOut}/>
                 </LogoutButton>
                 
               </UserWrapper>

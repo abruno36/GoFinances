@@ -15,7 +15,7 @@ import 'intl/locale-data/jsonp/pt-BR';
 
 import theme from './src/global/styles/theme';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { Routes } from './src/routes';
 import { AppRoutes } from './src/routes/app.routes';
 
 import { SignIn } from './src/screens/SignIn';
@@ -43,15 +43,12 @@ export default function App() {
     return null;
   }
   return (
-    <GestureHandlerRootView style={{ flex:1}}>
-     
+    <GestureHandlerRootView style={{ flex:1 }}>
       <ThemeProvider theme={theme}>
       <StatusBar barStyle="light-content"/>
-        <NavigationContainer>
             <AuthProvider>
-                <SignIn/>
+                <Routes />
             </AuthProvider>
-        </NavigationContainer>
       </ThemeProvider>
     </GestureHandlerRootView>
   );
