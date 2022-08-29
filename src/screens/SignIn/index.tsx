@@ -38,9 +38,7 @@ export function SignIn() {
             console.log(error);
             Alert.alert('Não foi possível conectar a conta Google');
             setIsLoading(false);
-        } finally {
-            setIsLoading(false);
-        }
+        } 
     }
 
     async function handlesignInWithApple(){
@@ -52,9 +50,7 @@ export function SignIn() {
             console.log(error);
             Alert.alert('Não foi possível conectar a conta Apple');
             setIsLoading(false);
-        } finally {
-            setIsLoading(false);
-        }
+        } 
     }
 
     return (
