@@ -27,6 +27,7 @@ import { categories } from "../../utils/categories";
 import { ScrollView } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
+
 interface TransactionData {
   type: "positive" | "negative";
   name: string;
