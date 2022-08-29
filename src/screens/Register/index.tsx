@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import uuid from 'react-native-uuid';
-
+import { useAuth } from '../../hooks/auth';
 
 import { Button } from '../../components/Form/Button';
 import { CategorySelectButton } from '../../components/Form/CategorySelectButton';
@@ -24,6 +24,7 @@ import {
   Fields,
   TransactionTypes
 } from './styles';
+
 
 interface FormData {
     [name: string] : any;
@@ -53,6 +54,8 @@ export function Register() {
     type NavigationProps = {
       navigate:(screen:string) => void;
     }
+
+    const { user} = useAuth();
 
     const navigation = useNavigation<NavigationProps>();
 
@@ -94,7 +97,7 @@ export function Register() {
       }
   
       try {
-        const dataKey = '@gofinances:transactions';
+        const dataKey = `@gofinances:transactions_user:${user.id}`;
         const data = await AsyncStorage.getItem(dataKey);
         const currentData = data ? JSON.parse(data) : [];
         const dataFormated = [
