@@ -38,7 +38,9 @@ export function SignIn() {
             console.log(error);
             Alert.alert('Não foi possível conectar a conta Google');
             setIsLoading(false);
-        } 
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     async function handlesignInWithApple(){
@@ -49,6 +51,8 @@ export function SignIn() {
         } catch(error) {
             console.log(error);
             Alert.alert('Não foi possível conectar a conta Apple');
+            setIsLoading(false);
+        } finally {
             setIsLoading(false);
         }
     }
@@ -95,7 +99,9 @@ export function SignIn() {
                     }
                 </FooterWrapper>
 
-                { isLoading && <ActivityIndicator color={theme.colors.shape} style={{ marginTop: 18 }} /> }
+                { isLoading && <ActivityIndicator 
+                   color={theme.colors.shape} 
+                   style={{ marginTop: 18 }} /> }
 
             </Footer>
 
